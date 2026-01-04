@@ -1,6 +1,6 @@
 import os
 
-VERSION = 160
+VERSION = 1
 LOCKOUT_FILE = os.path.join(os.path.expanduser("~"), ".ctx_state.bin")
 VESSEL_KEY = b"vessel"
 MAX_FATAL_ATTEMPTS = 10
