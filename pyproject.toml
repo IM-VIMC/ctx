@@ -5,16 +5,15 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "ctx-x"
 version = "1.0.0"
-description = "CTX"
+description = "CTX Titanium Encryption Tool"
 readme = "README.md"
 requires-python = ">=3.10"
-license = {text = "Apache-2.0"}
+license = "Apache-2.0"
 authors = [
   {name = "DAVID", email = "besoklibur457@gmail.com"}
 ]
 classifiers = [
   "Programming Language :: Python :: 3",
-  "License :: OSI Approved :: Apache Software License",
   "Operating System :: OS Independent",
 ]
 dependencies = []
@@ -24,7 +23,9 @@ Homepage = "https://github.com/IM-VIMC/ctx"
 Bug_Tracker = "https://github.com/IM-VIMC/ctx/issues"
 
 [project.scripts]
-ctx = "ctx.main:main_menu"
+ctx = "main:main_menu"
 
 [tool.setuptools]
-packages = ["ctx"]
+package-dir = {"" = "."}
+py-modules = ["main", "config"]
+packages = ["core", "kdf", "defense", "format", "tools"]
