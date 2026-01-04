@@ -13,7 +13,7 @@ def clear_screen():
 def print_header():
     clear_screen()
     print(f"{CYAN}{BOLD}")
-    print(f" CTX-X TITANIUM v{VERSION}")
+    print(f" CTX-X v{VERSION}")
     print(f" ──────────────────────────────────────────────────────────────")
     print(f" {GRAY}CORE:{RESET} {CONFIG['bits']}BIT  {GRAY}::{RESET}  {GRAY}ROUNDS:{RESET} {CONFIG['rounds']}  {GRAY}::{RESET}  {GRAY}MODE:{RESET} {CONFIG['speed_mode']}")
     print(f" ──────────────────────────────────────────────────────────────{RESET}\n")
