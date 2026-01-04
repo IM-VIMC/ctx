@@ -6,8 +6,8 @@ Security updates and bug fixes are currently provided only for the latest stable
 
 | Version | Supported |
 | :--- | :--- |
-| v1.6.0 (Titanium) | ✅ Supported |
-| < v1.5.0 | ❌ No Longer Supported |
+| v1.0.0 | ✅ Supported |
+| < v 0 | ❌ No Longer Supported |
 
 ## 2. Reporting a Vulnerability
 
