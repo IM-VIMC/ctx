@@ -149,14 +149,22 @@ def process_file(mode):
             with open(path, "rb") as f: blob = f.read()
             v, s, n, iv, r, sn, pi, dk, bits, ct, mac = unpack(blob)
             
-            target_hwid = get_hwid() if ct[0] == 1 else b"STATIC_NULL_BIND"
-            
             log_step(t['log_kdf'], delay=0.3)
-            mk = derive_master(pwd, s, {"scrypt_n":sn, "pbkdf2_iter":pi*1000, "dklen":dk}, target_hwid)
+            
+            mk = None
+            candidates = [b"STATIC_NULL_BIND", get_hwid()]
+            
+            for try_hwid in candidates:
+                try_mk = derive_master(pwd, s, {"scrypt_n":sn, "pbkdf2_iter":pi*1000, "dklen":dk}, try_hwid)
+                try_ak = hashlib.blake2b(try_mk + b"auth", digest_size=64).digest()
+                
+                if hmac.compare_digest(mac, hmac.new(try_ak, blob[:-64], hashlib.sha3_512).digest()):
+                    mk = try_mk
+                    break
             
             log_step(t['log_auth'], delay=0.3)
-            ak = hashlib.blake2b(mk + b"auth", digest_size=64).digest()
-            if not hmac.compare_digest(mac, hmac.new(ak, blob[:-64], hashlib.sha3_512).digest()):
+            
+            if mk is None:
                 st, count = check_lock(fail=True)
                 if st == "FATAL":
                     if CONFIG['shred']: secure_shred(path)
@@ -170,7 +178,8 @@ def process_file(mode):
             print(f"\n   {YELLOW}[ EXECUTION ]{RESET}")
             pt = transform(ct, ks, sb, s + n, r, bits, False, draw_progress, CONFIG["speed_mode"])
             
-            ext_r = pt[2:2+pt[1]].decode()
+            ext_len = pt[1]
+            ext_r = pt[2:2+ext_len].decode()
             actual = pt[17:]
             out_base = os.path.splitext(path)[0]
             
