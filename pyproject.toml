@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ctx-x"
+version = "1.0.0"
+description = "CTX"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+authors = [
+  {name = "DAVID", email = "besoklibur457@gmail.com"}
+]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: Apache Software License",
+  "Operating System :: OS Independent",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/IM-VIMC/ctx"
+Bug_Tracker = "https://github.com/IM-VIMC/ctx/issues"
+
+[project.scripts]
+ctx = "ctx.main:main_menu"
+
+[tool.setuptools]
+packages = ["ctx"]
