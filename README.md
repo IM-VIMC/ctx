@@ -4,7 +4,6 @@
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
 ![Python](https://img.shields.io/badge/python-3.8+-green.svg)
 ![Status](https://img.shields.io/badge/status-experimental-orange.svg)
-![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)
 
 **CTX-X** is a Python-based experimental cryptographic utility (toy-crypto) designed around a custom **Feistel Network** architecture. This project serves as a research platform for exploring memory-hard key derivation, hardware-bound security, and active anti-tamper mechanisms.
 
@@ -38,7 +37,7 @@ To mitigate offline brute-force and ASIC/FPGA acceleration, the key schedule fol
 
 ## 🛡️ Integrated Defense Mechanisms
 
-CTX-X Titanium goes beyond standard encryption by implementing active layers of security:
+CTX-X goes beyond standard encryption by implementing active layers of security:
 
 * **Hardware-Binding (HWID):** Uses `wmic` (Windows) or `machine-id` (Linux) to bind the decryption capability to a specific machine.
 * **Encrypt-then-MAC (EtM):** Full-payload integrity verification using **HMAC-SHA3-512** before decryption begins.
