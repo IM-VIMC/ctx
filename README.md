@@ -80,9 +80,10 @@ The encrypted output is packaged into a custom binary format using Python's `str
 1.  **Prerequisites:** Python 3.8+
 2.  **Clone & Run:**
     ```bash
-    git clone [https://github.com/IM-VIMC/ctx.git](https://github.com/IM-VIMC/ctx)
-    cd ctx
-    python main.py
+    pip install git+https://github.com/IM-VIMC/ctx
+    ```
+    ```
+    ctx-x
     ```
 3.  **Security Profile Setup:**
     * **Bit Depth:** Choose between 128 and 2048 bits.
