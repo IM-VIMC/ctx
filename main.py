@@ -222,4 +222,8 @@ def main_menu():
         elif c == '0': sys.exit()
 
 if __name__ == "__main__":
-    main_menu()
+    try:
+        main_menu()
+    except KeyboardInterrupt:
+        print(f"\n\n   {YELLOW}>>...{RESET}")
+        sys.exit()
